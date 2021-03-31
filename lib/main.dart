@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:private_teaching_tracker/common/globalVariables.dart';
 import 'package:private_teaching_tracker/screens/capture_lessons.dart';
 import 'package:private_teaching_tracker/screens/history.dart';
 import 'package:private_teaching_tracker/screens/reports.dart';
@@ -16,6 +17,7 @@ void main() {
     ),
     routes: {
       'home': (context) => Home(),
+      'studentsLandingPage': (context) => StudentsLandingPage(),
       'newStudent': (context) => NewStudent(),
       'allStudents': (context) => AllStudents(),
       'captureLessons': (context) => CaptureLessons(),
@@ -23,7 +25,24 @@ void main() {
   ));
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    super.initState();
+    updateStudentGlobalData();
+    updateHistoryGlobalData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -31,37 +50,35 @@ class Home extends StatelessWidget {
       child: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            //Navigator.of(context).pushNamed('captureLessons');
-            Navigator.pushNamed(context, 'captureLessons');
-            // Navigator.push(
-            //   context,
-            //   new MaterialPageRoute(
-            //     builder: (context) => CaptureLessons(),
-            //   ),
-            // );
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          onPressed: () async {
+            await updateStudentGlobalData();
+            Navigator.pushNamed(context, 'captureLessons',
+                arguments: allStudentsGV);
           },
           icon: Icon(Icons.add),
           label: Text("Capture Lesson"),
         ),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           bottom: TabBar(
             tabs: [
               Tab(
-                //icon: Icon(Icons.assessment_outlined),
                 text: 'History',
               ),
               Tab(
-                //icon: Icon(Icons.person),
                 text: 'Students',
               ),
               Tab(
-                //icon: Icon(Icons.attach_file),
                 text: 'Report',
               )
             ],
           ),
-          title: Text('SST - Simple Student Tracker'),
+          title: Text(
+            'SST - Simple Student Tracker',
+          ),
+          centerTitle: true,
         ),
         body: TabBarView(
           children: [
