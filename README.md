@@ -1,4 +1,4 @@
-# SST-Simple-Student-Tracker
+# STT-Simple-Teaching-Tracker
 
 An app to track private teaching hours. This app is intended to be a simple tool for private teachers to track their teaching hours, view historical records, and generate reports. 
 
