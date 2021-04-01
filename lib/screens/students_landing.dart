@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:private_teaching_tracker/common/globalVariables.dart';
-import 'package:private_teaching_tracker/database/database_shared.dart';
 
 class StudentsLandingPage extends StatelessWidget {
   @override
@@ -10,50 +8,29 @@ class StudentsLandingPage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Text("This is the Students Landing Page"),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, 'newStudent');
-              },
-              child: Text("New Student"),
+            SizedBox(
+              height: 25,
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, 'allStudents');
-              },
-              child: Text("All Students"),
-            ),
-            ElevatedButton(
-              child: Text(
-                'query all students',
+            Container(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, 'newStudent');
+                },
+                child: Text("Add New Student"),
               ),
-              onPressed: () {
-                _queryStudent();
-              },
             ),
-            ElevatedButton(
-              child: Text(
-                'query history',
-              ),
-              onPressed: () {
-                _queryLessons();
-              },
+            SizedBox(
+              height: 25,
             ),
-            ElevatedButton(
-              child: Text(
-                'print GV Students',
+            Container(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, 'allStudents');
+                },
+                child: Text("Edit Existing Students"),
               ),
-              onPressed: () {
-                print(allStudentsGV);
-              },
-            ),
-            ElevatedButton(
-              child: Text(
-                'print GV Names',
-              ),
-              onPressed: () {
-                print(allStudentNames);
-              },
             ),
           ],
         ),
@@ -61,17 +38,17 @@ class StudentsLandingPage extends StatelessWidget {
     );
   }
 
-  // Button onPressed methods
-  void _queryStudent() async {
-    List allStudents = await UserDatabase.instance.getStudentsData();
-    print(allStudents);
-  }
-
-  void _queryLessons() async {
-    List allLessonsHistory =
-        await UserDatabase.instance.getAllLessonsHistoryData();
-    print(allLessonsHistory);
-  }
+  // // Button onPressed methods
+  // void _queryStudent() async {
+  //   List allStudents = await UserDatabase.instance.getStudentsData();
+  //   print(allStudents);
+  // }
+  //
+  // void _queryLessons() async {
+  //   List allLessonsHistory =
+  //       await UserDatabase.instance.getAllLessonsHistoryData();
+  //   print(allLessonsHistory);
+  // }
 
   // void _query() async {
   //   final allRows = await dbHelper.queryAllRows();

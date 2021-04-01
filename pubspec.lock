@@ -8,6 +8,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.5.0"
+  autocomplete_textfield:
+    dependency: "direct main"
+    description:
+      name: autocomplete_textfield
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.7.3"
   boolean_selector:
     dependency: transitive
     description:
@@ -49,7 +56,7 @@ packages:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.2"
   fake_async:
     dependency: transitive
     description:

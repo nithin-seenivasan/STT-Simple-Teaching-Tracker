@@ -28,6 +28,7 @@ class _CaptureLessonsState extends State<CaptureLessons> {
       onPressed: () async {
         //Get current time and write to the LessonsHistory table
         int x = DateTime.now().millisecondsSinceEpoch;
+        //Write the data to the table - lessonend time is dependant on the defined lesson length in student table
         final id = await UserDatabase.instance.insertLesson(LessonsHistory(
             student.name,
             student.lessontype,
@@ -44,7 +45,7 @@ class _CaptureLessonsState extends State<CaptureLessons> {
     );
 
     Widget cancelButton = TextButton(
-      child: Text("Cancel"),
+      child: Text("CANCEL"),
       onPressed: () {
         Navigator.of(context, rootNavigator: true).pop();
       },
@@ -78,22 +79,30 @@ class _CaptureLessonsState extends State<CaptureLessons> {
       },
       child: Container(
           child: Card(
-              color: Colors.white10,
-              elevation: 5,
+              color: Colors.white12,
+              elevation: 2,
               child: ListTile(
                 dense: false,
-                title: Text(
-                  student.name,
-                  style: TextStyle(
-                    fontSize: 18,
+                title: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                  child: Text(
+                    student.name,
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
                   ),
                 ),
-                subtitle: Text(student.lessontype),
-                trailing:
-                    // Spacer(
-                    //   flex: 5,
-                    // ),
-                    Text(student.lessonlength.toString() + " minutes"),
+                subtitle: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                  child: Text(
+                    student.lessontype,
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+                trailing: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                  child: Text(student.lessonlength.toString() + " minutes"),
+                ),
               ))),
     );
   }

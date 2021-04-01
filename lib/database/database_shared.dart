@@ -73,6 +73,15 @@ class UserDatabase {
     return list;
   }
 
+  // Reads selected student data (R) - based on LessonType
+  Future getSelectedStudentsData(String lessonType) async {
+    Database db = await instance.database;
+    var res = await db
+        .rawQuery("select * from students where lessontype = '$lessonType'");
+    List list = res.toList().map((c) => Student.fromMap(c)).toList();
+    return list;
+  }
+
   // Reads all history data (R)
   Future getAllLessonsHistoryData() async {
     Database db = await instance.database;
@@ -84,7 +93,7 @@ class UserDatabase {
     return allList;
   }
 
-  // Reads selected history data (R)
+  // Reads selected history data (R) - based on Student Name
   Future getSelectedLessonsHistoryData(String selectedName) async {
     Database db = await instance.database;
     //Query to get all lessons with a specified name, ordered by datetime
@@ -96,18 +105,19 @@ class UserDatabase {
   }
 
   /// Update - Students
-  Future updateStudent(Student student) async {
+  Future updateStudent(Student originalStudent, Student modifiedStudent) async {
     Database db = await instance.database;
-    return await db.update("students", student.maptoUserMap(),
+    return await db.update("students", modifiedStudent.maptoUserMap(),
         where: 'name = ? and lessontype = ?',
-        whereArgs: [student.name, student.lessontype]);
+        whereArgs: [originalStudent.name, originalStudent.lessontype]);
   }
 
   /// Update - History
-  Future updateLesson(int startTime, LessonsHistory updatedHistory) async {
+  Future updateLesson(
+      LessonsHistory originalHistory, LessonsHistory updatedHistory) async {
     Database db = await instance.database;
     return await db.update("lessons", updatedHistory.maptoUserMap(),
-        where: 'starttime = ?', whereArgs: [startTime]);
+        where: 'starttime = ?', whereArgs: [originalHistory.starttime]);
   }
 
   /// Delete - Students
@@ -119,9 +129,9 @@ class UserDatabase {
   }
 
   /// Delete - History
-  Future deleteLesson(int startTime, LessonsHistory updatedHistory) async {
+  Future deleteLesson(LessonsHistory updatedHistory) async {
     Database db = await instance.database;
-    return await db
-        .delete("lessons", where: 'starttime = ?', whereArgs: [startTime]);
+    return await db.delete("lessons",
+        where: 'starttime = ?', whereArgs: [updatedHistory.starttime]);
   }
 }

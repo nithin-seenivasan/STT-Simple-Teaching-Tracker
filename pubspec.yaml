@@ -24,6 +24,7 @@ dependencies:
   sqflite: ^2.0.0+3
   path_provider: ^2.0.1
   intl: ^0.17.0
+  autocomplete_textfield: ^1.7.3
 
   flutter:
     sdk: flutter

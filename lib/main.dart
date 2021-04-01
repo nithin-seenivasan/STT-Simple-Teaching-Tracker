@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
                 arguments: allStudentsGV);
           },
           icon: Icon(Icons.add),
-          label: Text("Capture Lesson"),
+          label: Text("I'm teaching!"),
         ),
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
             ],
           ),
           title: Text(
-            'SST - Simple Student Tracker',
+            'STT - Simple Teaching Tracker',
           ),
           centerTitle: true,
         ),
