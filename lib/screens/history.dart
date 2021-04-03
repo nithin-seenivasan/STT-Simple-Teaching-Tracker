@@ -41,7 +41,7 @@ class _TeachingHistoryState extends State<TeachingHistory> {
   }
 
   //DropDownBox selection -> correct query for listview
-  Future<void> dynamicSelectedData(String selectedStudent) async {
+  Future<String> dynamicSelectedData(String selectedStudent) async {
     if (selectedStudent == "All Students") {
       selectedLessonsHistory =
           await UserDatabase.instance.getAllLessonsHistoryData();
@@ -57,6 +57,7 @@ class _TeachingHistoryState extends State<TeachingHistory> {
         print(x);
       });
     }
+    return Future.value("Data loaded successfully");
   }
 
   //Handles the entire editing logic, with the AlertDIalog as UI. Called -> onTap of Card.
@@ -444,7 +445,6 @@ class _TeachingHistoryState extends State<TeachingHistory> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                     child: DropdownButton<String>(
-                      //dropdownColor: Colors.white12,
                       iconSize: 40,
                       iconEnabledColor: Colors.blue,
                       value: _selectedStudent,

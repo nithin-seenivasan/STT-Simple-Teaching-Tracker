@@ -39,6 +39,20 @@ String parseHistoryTime(int inputMSTES) {
   return timeString;
 }
 
+//Parse MSSE to output months For the report function
+String parseHistoryMonthYear(int inputMSTES) {
+  DateTime date = DateTime.fromMillisecondsSinceEpoch(inputMSTES);
+  String monthYearString = DateFormat("MMMM, yyyy").format(date);
+  return monthYearString;
+}
+
+//Parse MSSE to output MMMM-YY For the PDF generation function
+String parsePDFMonthYearFormat(int inputMSTES) {
+  DateTime date = DateTime.fromMillisecondsSinceEpoch(inputMSTES);
+  String monthYearString = DateFormat("MMMM_yy").format(date);
+  return monthYearString;
+}
+
 //Row used to generate the autocomplete suggestions
 Widget row(String item) {
   return Row(

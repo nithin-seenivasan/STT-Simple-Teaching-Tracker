@@ -99,9 +99,9 @@ class UserDatabase {
     //Query to get all lessons with a specified name, ordered by datetime
     var lessHist = await db.rawQuery(
         "select * from lessons where name = '$selectedName' ORDER BY starttime DESC");
-    List selectedlist =
+    List selectedList =
         lessHist.toList().map((c) => LessonsHistory.fromMap(c)).toList();
-    return selectedlist;
+    return selectedList;
   }
 
   /// Update - Students

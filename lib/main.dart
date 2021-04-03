@@ -21,6 +21,7 @@ void main() {
       'newStudent': (context) => NewStudent(),
       'allStudents': (context) => AllStudents(),
       'captureLessons': (context) => CaptureLessons(),
+      'generateReport': (context) => SelectStudentForReport(),
     },
   ));
 }
@@ -84,7 +85,7 @@ class _HomeState extends State<Home> {
           children: [
             TeachingHistory(),
             StudentsLandingPage(),
-            GenerateReports(),
+            SelectStudentForReport(),
           ],
         ),
       ),

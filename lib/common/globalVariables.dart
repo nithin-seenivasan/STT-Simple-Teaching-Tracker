@@ -10,6 +10,8 @@ List<String> allCurrentStudentNamesGV = [];
 List<String> allHistoryStudentNamesGV = [];
 List allHistoryDataGV = [];
 List<String> allLessonTypesGV = [];
+String filePathGV = "";
+String fileNameGV = "";
 
 Future<void> updateStudentGlobalData() async {
   //all Student data mapped to Global Variable
