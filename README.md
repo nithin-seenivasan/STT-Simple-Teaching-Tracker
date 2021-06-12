@@ -1,5 +1,7 @@
 # STT-Simple-Teaching-Tracker
 
+Play Store listing: [STT - Simple Teaching Tracker](https://play.google.com/store/apps/details?id=com.stt.private_teaching_tracker "STT - Simple Teaching Tracker")
+
 An app to track private teaching hours. This app is intended to be a simple tool for private teachers to track their teaching hours, view historical records, and generate reports.
 
 The app offers the following functions: 
@@ -33,3 +35,4 @@ The app offers the following functions:
 - 03.04.21: Built reports functionality with filtering, data preview using DataTables and PDF export   
 - 08.04.21: Began the process of porting the Android app to iOS
 - 30.05.21: Published to the App Store under the name "STT - Simple Teaching Tracker", pending review
+- 07.06.21: Review completed, app is now live! ([STT - Simple Teaching Tracker](https://play.google.com/store/apps/details?id=com.stt.private_teaching_tracker "STT - Simple Teaching Tracker"))
